@@ -1,6 +1,6 @@
 #include <iostream>
 #include "GLFW/glfw3.h"
-#include "src/Window.h"
+#include "Window.h"
 
 int main(){
   Window window;
