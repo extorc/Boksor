@@ -7,4 +7,7 @@ void Window::CreateWindow(int w, int h, const char* title){
   window = glfwCreateWindow(w, h, title, 0,0);
 
   glfwMakeContextCurrent(window);
+
+  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    std::cout << "Failed to initialize GLAD" << std::endl;
 }
