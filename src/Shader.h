@@ -16,7 +16,11 @@ public:
     {
         glUniform1i(glGetUniformLocation(program, variable), v0);
     }
-
+    static void Set1f(unsigned int program, const char* variable, float v0)
+    {
+        glUniform1f(glGetUniformLocation(program, variable), v0);
+    }
+    unsigned int GetProgram() const {return program;}
 private:
     unsigned int program;
 };
