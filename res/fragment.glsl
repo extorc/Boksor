@@ -1,15 +1,32 @@
 #version 330 core
-out vec4 FragColor;  
 
+out vec4 FragColor;  
 uniform float x;
 uniform float y;
 
+struct Ray{
+    vec3 origin;
+    vec3 direction;
+};
+
+bool hit_sphere(vec3 center, float radius, Ray r){
+    vec3 oc = r.origin - center;
+    float a = dot(r.direction,r.direction);
+    float b = 2.0 * dot(oc, r.direction);
+    float c = dot(oc, oc) - radius * radius;
+    float discriminant = b * b - 4 * a * c;
+    return discriminant > 0;
+}
 void main()
 {
-    vec2 u_resolution = vec2(x, y);
-    vec2 st = gl_FragCoord.xy/u_resolution; //normalizing
-    vec3 canvas = vec3(1.0);
+    vec3 camera_origin = vec3(0,0,0);
+    vec2 st = gl_FragCoord.xy/vec2(x, y);
+    Ray r = Ray(camera_origin, normalize(vec3(st.xy, 1.0)));
 
-    canvas = mix(canvas, vec3(.7,.7,1),st.y); //sky gradiant
-    FragColor = vec4(canvas,1.0);
+    if(hit_sphere(vec3(-1,-1,-2),0.1,r)){
+        FragColor = vec4(1,0,0,1);
+    }
+    else{
+        FragColor = vec4(st.xy, 1.0,1.0);
+    }
 }

@@ -41,7 +41,7 @@ unsigned int Shader::CreateShader(const char* source, unsigned int type) {
 			str_type = "Vertex";
 		else
 			str_type = "Fragment";
-		std::cout << "Error in " << str_type << "Shader" << infoLog << std::endl;
+		std::cout << "Error in " << str_type << " Shader " << infoLog << std::endl;
 	};
 
 	return shader;

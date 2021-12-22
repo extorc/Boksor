@@ -4,7 +4,7 @@
 
 int main(){
   Window window;
-  window.CreateWindow(800,450,"Boksor");
+  window.CreateWindow(500,500,"Boksor");
 
   PrepareRender();
 
@@ -18,7 +18,6 @@ int main(){
     Shader::Set1f(shader.GetProgram(),"y",450);
 
     glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(1,0,0,1);
 
     Render();
 

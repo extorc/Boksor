@@ -4,3 +4,9 @@
 [submodule "vendor/glad"]
 	path = vendor/glad
 	url = https://github.com/extorc/glad
+[submodule "build/vendor/glm"]
+	path = build/vendor/glm
+	url = https://github.com/g-truc/glm
+[submodule "vendor/glm"]
+	path = vendor/glm
+	url = https://github.com/g-truc/glm
