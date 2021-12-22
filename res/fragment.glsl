@@ -19,11 +19,11 @@ bool hit_sphere(vec3 center, float radius, Ray r){
 }
 void main()
 {
-    vec3 camera_origin = vec3(0,0,0);
+    vec3 camera_origin = vec3(0,0,2);
     vec2 st = gl_FragCoord.xy/vec2(x, y);
-    Ray r = Ray(camera_origin, normalize(vec3(st.xy, 1.0)));
+    Ray r = Ray(camera_origin, normalize(vec3(st.x - 0.5, st.y - 0.5, 1.0)));
 
-    if(hit_sphere(vec3(-1,-1,-2),0.1,r)){
+    if(hit_sphere(vec3(0,0,0),0.5,r)){
         FragColor = vec4(1,0,0,1);
     }
     else{

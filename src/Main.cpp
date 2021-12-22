@@ -13,9 +13,9 @@ int main(){
   Shader shader(fragment.c_str());
 
   while(window.OnClose()){
-
-    Shader::Set1f(shader.GetProgram(),"x",800);
-    Shader::Set1f(shader.GetProgram(),"y",450);
+    
+    Shader::Set1f(shader.GetProgram(),"x",500);
+    Shader::Set1f(shader.GetProgram(),"y",500);
 
     glClear(GL_COLOR_BUFFER_BIT);
 
