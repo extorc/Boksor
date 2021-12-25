@@ -41,8 +41,26 @@ bool hit_sphere(Sphere sphere, Ray r, out hit_record rec){
     return true;
 }
 
+Sphere world[] = Sphere[](
+    Sphere(vec3(0,0,0),0.5),
+    Sphere(vec3(-0.3,0,0),0.1)
+);
+
+bool world_hit(Ray r, out hit_record rec){
+    hit_record temp_rec;
+    bool hit = false;
+    for(int i = 0; i < world.length(); i++){
+        if(hit_sphere(world[i], r, temp_rec)){
+            hit = true;
+            rec = temp_rec;
+        }
+    }
+
+    return hit;
+}
+
 void main()
-{
+{   
     vec3 camera_origin = vec3(0,0,2);
     vec2 st = gl_FragCoord.xy/vec2(x, y);
     Ray r = Ray(camera_origin, normalize(vec3(st.x - 0.5, st.y - 0.5, 1.0)));
@@ -50,7 +68,7 @@ void main()
     Sphere sphere = {vec3(0,0,0),0.5};
     hit_record rec;
     
-    if(hit_sphere(sphere,r,rec)){
+    if(world_hit(r, rec)){
         FragColor = vec4(rec.normal, 1);
     }
     else{
